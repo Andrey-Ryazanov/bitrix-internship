@@ -1,4 +1,8 @@
 <?
+$PERM["index.php"]["8"]="W";
+$PERM["o-servise"]["8"]="W";
+$PERM["obyavleniya"]["8"]="W";
+$PERM["bitrix"]["8"]="D";
 $PERM["lichnyy-kabinet-pokupatelya"]["*"]="D";
 $PERM["lichnyy-kabinet-pokupatelya"]["G6"]="R";
 $PERM["lichnyy-kabinet-prodavtsa"]["*"]="D";
