@@ -1,3 +1,4 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,29 +7,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
+    <?=$APPLICATION->ShowHead(); ?>
     <?php
         use Bitrix\Main\Page\Asset;
 
-        Asset::getInstance()->addCss('/local/templates/home/css/bootstrap.min.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/magnific-popup.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/jquery-ui.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/owl.carousel.min.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/owl.theme.default.min.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/bootstrap-datepicker.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/mediaelementplayer.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/animate.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/fonts/flaticon/font/flaticon.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/fl-bigmug-line.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/aos.css', true);
-        Asset::getInstance()->addCss('/local/templates/home/css/style.css', true);
+        Asset::getInstance()->addString('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">');
+
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH .'/fonts/icomoon/style.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/bootstrap.min.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/magnific-popup.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/jquery-ui.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/owl.carousel.min.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/owl.theme.default.min.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/bootstrap-datepicker.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/mediaelementplayer.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/animate.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/flaticon/font/flaticon.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/fl-bigmug-line.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/aos.css');
+        Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
     ?>
 </head>
 
 <body>
+  <?= $APPLICATION->ShowPanel(); ?>
 
   <div class="site-loader"></div>
 
@@ -67,7 +69,7 @@
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong>HomeSpace<span
+            <h1 class=""><a href="/" class="h5 text-uppercase text-black"><strong>HomeSpace<span
                     class="text-danger">.</span></strong></a></h1>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
@@ -78,7 +80,7 @@
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="active">
-                  <a href="index.html">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li class="has-children">
                   <a href="properties.html">Properties</a>
