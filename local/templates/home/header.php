@@ -50,17 +50,37 @@
         <div class="row align-items-center">
           <div class="col-6 col-md-6">
             <p class="mb-0">
-              <a href="#" class="mr-3"><span class="text-black fl-bigmug-line-phone351"></span> <span
-                  class="d-none d-md-inline-block ml-2">+2 102 3923 3922</span></a>
-              <a href="#"><span class="text-black fl-bigmug-line-email64"></span> <span
-                  class="d-none d-md-inline-block ml-2">info@domain.com</span></a>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:main.include",
+                "",
+                Array(
+                  "AREA_FILE_SHOW" => "file",
+                  "PATH" => "/local/include/header/phone.php",
+                  "EDIT_TEMPLATE" => ""
+                )
+              );?>
+              <?$APPLICATION->IncludeComponent(
+                  "bitrix:main.include",
+                  "",
+                  Array(
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/local/include/header/email.php",
+                    "EDIT_TEMPLATE" => ""
+                  )
+              );?>
             </p>
           </div>
           <div class="col-6 col-md-6 text-right">
-            <a href="#" class="mr-3"><span class="text-black icon-facebook"></span></a>
-            <a href="#" class="mr-3"><span class="text-black icon-twitter"></span></a>
-            <a href="#" class="mr-0"><span class="text-black icon-linkedin"></span></a>
-          </div>
+          <?$APPLICATION->IncludeComponent(
+              "bitrix:main.include",
+              "",
+              Array(
+                "AREA_FILE_SHOW" => "file",
+                "PATH" => "/local/include/header/social_media_contacts.php",
+                "EDIT_TEMPLATE" => ""
+              )
+            );?>
+            </div>
         </div>
       </div>
     </div>
@@ -69,8 +89,17 @@
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class=""><a href="/" class="h5 text-uppercase text-black"><strong>HomeSpace<span
-                    class="text-danger">.</span></strong></a></h1>
+            <h1 class="">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    Array(
+                      "AREA_FILE_SHOW" => "file",
+                      "PATH" => "/local/include/header/title.php",
+                      "EDIT_TEMPLATE" => ""
+                    )
+                );?>
+                </h1>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
             <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -102,6 +131,25 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
+                <!-- Код компонента меню -->
+                <?$APPLICATION->IncludeComponent(
+                  "bitrix:menu",
+                  ".default",
+                  array(
+                    "ROOT_MENU_TYPE" => "top",
+                    "MAX_LEVEL" => "1",
+                    "MENU_CACHE_TYPE" => "A",
+                    "MENU_CACHE_TIME" => "3600",
+                    "MENU_CACHE_USE_GROUPS" => "Y",
+                    "MENU_CACHE_GET_VARS" => array(),
+                    "CACHE_SELECTED_ITEMS" => "N",
+                    "MENU_THEME" => "site",
+                    "USE_EXT" => "N",
+                    "DELAY" => "N",
+                    "ALLOW_MULTI_SELECT" => "N"
+                  ),
+                  false
+                );?>
             </nav>
           </div>
         </div>
