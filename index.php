@@ -36,10 +36,15 @@ $APPLICATION->SetTitle("Title");
 
   </div>
 
- <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list",
-	"",
-	Array(
+ <? 
+GLOBAL $arrFilter; 
+$arrFilter = array( 
+'PROPERTY_PRIORITY_DEAL' => 1, 
+); 
+ $APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	".default", 
+	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
@@ -48,7 +53,7 @@ $APPLICATION->SetTitle("Title");
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
 		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
@@ -59,8 +64,11 @@ $APPLICATION->SetTitle("Title");
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array("",""),
-		"FILTER_NAME" => "",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_NAME" => "arrFilter",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "1",
 		"IBLOCK_TYPE" => "ads",
@@ -78,7 +86,10 @@ $APPLICATION->SetTitle("Title");
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"PROPERTY_CODE" => array("PRIORITY_DEAL",""),
+		"PROPERTY_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
@@ -90,8 +101,10 @@ $APPLICATION->SetTitle("Title");
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N"
-	)
+		"STRICT_SECTION_CHECK" => "N",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
 );?>
 <div class="py-5">
 	<div class="container">
@@ -128,6 +141,7 @@ $APPLICATION->SetTitle("Title");
 		"PATH" => "/local/include/list_component_3.php"
 	)
 );?>
+
 			</div>
 		</div>
 	</div>
@@ -143,7 +157,7 @@ $APPLICATION->SetTitle("Title");
 		</div>
 		<div class="row mb-5">
 			<div class="col-md-6 col-lg-4 mb-4">
- <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="/local/templates/home/images/img_1.jpg" class="img-fluid"> </figure>
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_1.jpg" class="img-fluid"> </figure>
 				<div class="prop-text">
 					<div class="inner">
  <span class="price rounded">$1,930,000</span>
@@ -172,7 +186,7 @@ $APPLICATION->SetTitle("Title");
  </a>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-4">
- <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="/local/templates/home/images/img_2.jpg" class="img-fluid"> </figure>
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_2.jpg" class="img-fluid"> </figure>
 				<div class="prop-text">
 					<div class="inner">
  <span class="price rounded">$2,438,000</span>
@@ -201,7 +215,7 @@ $APPLICATION->SetTitle("Title");
  </a>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-4">
- <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="/local/templates/home/images/img_3.jpg" class="img-fluid"> </figure>
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_3.jpg" class="img-fluid"> </figure>
 				<div class="prop-text">
 					<div class="inner">
  <span class="price rounded">$5,320,000</span>
@@ -230,7 +244,7 @@ $APPLICATION->SetTitle("Title");
  </a>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-4">
- <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="/local/templates/home/images/img_4.jpg" class="img-fluid"> </figure>
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_4.jpg" class="img-fluid"> </figure>
 				<div class="prop-text">
 					<div class="inner">
  <span class="price rounded">$2,350,000</span>
@@ -259,7 +273,7 @@ $APPLICATION->SetTitle("Title");
  </a>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-4">
- <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="/local/templates/home/images/img_5.jpg" class="img-fluid"> </figure>
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_5.jpg" class="img-fluid"> </figure>
 				<div class="prop-text">
 					<div class="inner">
  <span class="price rounded">$1,550,000</span>
@@ -288,7 +302,7 @@ $APPLICATION->SetTitle("Title");
  </a>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-4">
- <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="/local/templates/home/images/img_6.jpg" class="img-fluid"> </figure>
+ <a href="property-details.html" class="prop-entry d-block"> <figure> <img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_6.jpg" class="img-fluid"> </figure>
 				<div class="prop-text">
 					<div class="inner">
  <span class="price rounded">$4,291,000</span>
@@ -341,7 +355,7 @@ $APPLICATION->SetTitle("Title");
 		"ACTIVE_DATE_FORMAT" => "",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
@@ -435,7 +449,7 @@ $APPLICATION->SetTitle("Title");
 		"ACTIVE_DATE_FORMAT" => "",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
@@ -456,7 +470,7 @@ $APPLICATION->SetTitle("Title");
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
- <a href="#"><img alt="Image" src="/local/templates/home/images/img_4.jpg" class="img-fluid"></a>
+ <a href="#"><img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_4.jpg" class="img-fluid"></a>
 				<div class="p-4 bg-white">
  <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
 					<h2 class="h5 text-black mb-3"><a href="#">When To Sell &amp; How Much To Sell?</a></h2>
@@ -466,7 +480,7 @@ $APPLICATION->SetTitle("Title");
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="200">
- <a href="#"><img alt="Image" src="/local/templates/home/images/img_2.jpg" class="img-fluid"></a>
+ <a href="#"><img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_2.jpg" class="img-fluid"></a>
 				<div class="p-4 bg-white">
  <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
 					<h2 class="h5 text-black mb-3"><a href="#">When To Sell &amp; How Much To Sell?</a></h2>
@@ -476,7 +490,7 @@ $APPLICATION->SetTitle("Title");
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="300">
- <a href="#"><img alt="Image" src="/local/templates/home/images/img_3.jpg" class="img-fluid"></a>
+ <a href="#"><img alt="Image" src="<?=SITE_TEMPLATE_PATH?>/images/img_3.jpg" class="img-fluid"></a>
 				<div class="p-4 bg-white">
  <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
 					<h2 class="h5 text-black mb-3"><a href="#">When To Sell &amp; How Much To Sell?</a></h2>
@@ -510,7 +524,7 @@ $APPLICATION->SetTitle("Title");
 		"ACTIVE_DATE_FORMAT" => "d-m-Y",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
