@@ -30,8 +30,8 @@ $this->setFrameMode(true);
         <div class="text">
             <h2><?= $arItem["NAME"] ?></h2>
             <p class="location"><span class="property-icon icon-room"></span><?= $arItem["PREVIEW_TEXT"] ?></p>
-            <p class="mb-2"><strong></strong></p>
-            <p class="mb-0"><a href="<?= $arItem["DISPLAY_PROPERTIES"]["LINK"]["VALUE"] ?>" class="text-uppercase small letter-spacing-1 font-weight-bold"><?=GetMessage("More_Details")?></a></p>
+            <p class="mb-2"><strong>$<?= number_format($arItem["DISPLAY_PROPERTIES"]["PRICE"]["VALUE"]) ?></strong></p>
+            <p class="mb-0"><a href="<?=$arItem['DETAIL_PAGE_URL'] ?>" class="text-uppercase small letter-spacing-1 font-weight-bold"><?=GetMessage("More_Details")?></a></p>
         </div>
 	  </div>
 	</div>

@@ -4,6 +4,10 @@ $APPLICATION->SetTitle("Главная");
 ?>
 
  <? 
+ GLOBAL $arrFilter; 
+ $arrFilter = array( 
+ 	"PROPERTY_PRIORITY_DEAL_VALUE" => "Да", 
+ ); 
  $APPLICATION->IncludeComponent(
 	"bitrix:news.list", 
 	"slider", 
@@ -31,10 +35,10 @@ $APPLICATION->SetTitle("Главная");
 			0 => "",
 			1 => "",
 		),
-		"FILTER_NAME" => "",
+		"FILTER_NAME" => "arrFilter",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-		"IBLOCK_ID" => "9",
-		"IBLOCK_TYPE" => "content",
+		"IBLOCK_ID" => "1",
+		"IBLOCK_TYPE" => "ads",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"MESSAGE_404" => "",
@@ -50,7 +54,7 @@ $APPLICATION->SetTitle("Главная");
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"PROPERTY_CODE" => array(
-			0 => "LINK",
+			0 => "PRICE",
 			1 => "",
 		),
 		"SET_BROWSER_TITLE" => "Y",
@@ -195,7 +199,7 @@ $APPLICATION->SetTitle("Главная");
 		),
 		"PROPERTY_CODE" => "",
 		"DETAIL_URL" => "",
-		"ACTIVE_DATE_FORMAT" => "j M Y",
+		"ACTIVE_DATE_FORMAT" => "j M, Y",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
 		"CACHE_GROUPS" => "N",
