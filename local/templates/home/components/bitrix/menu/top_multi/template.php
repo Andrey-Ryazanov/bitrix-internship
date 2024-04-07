@@ -13,33 +13,20 @@
             <?= str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"])); ?>
         <?php endif ?>
 
-
         <?php if ($arItem["IS_PARENT"]): ?>
-
-            <?php if ($arItem["DEPTH_LEVEL"] == 1): ?>
-                <li class="has-children"><a href="<?=$arItem["LINK"]?>" class="<?php if ($arItem["SELECTED"]): ?>root-item-selected<?php else: ?>root-item<?php endif ?>"><?=$arItem["TEXT"]?></a>
-                    <ul class="dropdown">
-            <?php else: ?>
-                <li<?php if ($arItem["SELECTED"]): ?> class="item-selected"<?php endif ?> class="has-children"><a href="<?=$arItem["LINK"]?>" class="parent"><?=$arItem["TEXT"]?></a>
-                    <ul class="dropdown">
-            <?php endif ?>		
+            <li class="has-children">
+                <a href="<?=$arItem["LINK"]?>">
+                    <?=$arItem["TEXT"]?>
+                </a>
+                <ul class="dropdown">
         <?php else: ?>
 
             <?php if ($arItem["PERMISSION"] > "D"): ?>
-
-                <?php if ($arItem["DEPTH_LEVEL"] == 1): ?>
-					<li><a href="<?=$arItem["LINK"]?>" class="<?php if ($arItem["SELECTED"]): ?>root-item-selected<?php else: ?>root-item<?php endif ?>"><?=$arItem["TEXT"]?></a></li>
-                <?php else: ?>
-                    <li<?php if ($arItem["SELECTED"]): ?> class="item-selected"<?php endif ?>><a href="<?= $arItem["LINK"] ?>" class="parent"><?=$arItem["TEXT"]?></a></li>
-                <?php endif ?>
-
-            <?php else: ?>
-				
-                <?php if ($arItem["DEPTH_LEVEL"] == 1): ?>
-                    <li><a href="" class="<?php if ($arItem["SELECTED"]): ?>root-item-selected<?php else: ?>root-item<?php endif ?>" title="<?=GetMessage("MENU_ITEM_ACCESS_DENIED")?>"><?=$arItem["TEXT"]?></a></li>
-                <?php else: ?>
-                    <li><a href="" class="denied" title="<?=GetMessage("MENU_ITEM_ACCESS_DENIED")?>"><?=$arItem["TEXT"]?></a></li>
-                <?php endif ?>
+                <li>
+                    <a href="<?=$arItem["LINK"]?>">
+                        <?=$arItem["TEXT"]?>
+                    </a>
+                </li>
 				
             <?php endif ?>
 

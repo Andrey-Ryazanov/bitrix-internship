@@ -33,7 +33,7 @@ $this->setFrameMode(true);
 						<img alt="Image" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>" class="img-fluid">
 					</a>
 					<div class="p-4 bg-white">
-						<span class="d-block text-secondary small text-uppercase"><?= date_format(date_create($arItem['DATE_CREATE']), 'M jS, Y') ?></span>
+						<span class="d-block text-secondary small text-uppercase"><?= $arItem['DISPLAY_ACTIVE_FROM'] ?></span>
 						<h2 class="h5 text-black mb-3"><a href="<?= $arItem['DETAIL_PAGE_URL'] ?>"><?= $arItem['NAME'] ?></a></h2>
 						<p>
 							<?= $arItem['PREVIEW_TEXT'] ?>
