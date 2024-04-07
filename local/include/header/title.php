@@ -1,5 +1,5 @@
 <a href="/" class="h5 text-uppercase text-black">
-    <strong>HomeSpace
+    <strong><?=GetMessage("HomeSpace")?>
         <span class="text-danger">.</span>
     </strong>
 </a>
