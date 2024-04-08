@@ -19,7 +19,7 @@
                     "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
                         "MAX_LEVEL" => "1",	// Уровень вложенности меню
                         "MENU_CACHE_TYPE" => "A",	// Тип кеширования
-                        "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                        "MENU_CACHE_TIME" => "2592000",	// Время кеширования (сек.)
                         "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
                         "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
                         "CACHE_SELECTED_ITEMS" => "N",
