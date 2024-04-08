@@ -129,4 +129,15 @@
       </div>
     </div>
   </div>
+  <?$APPLICATION->IncludeComponent(
+	"bitrix:breadcrumb", 
+	"breadcrumb", 
+	array(
+		"PATH" => "",
+		"SITE_ID" => "s1",
+		"START_FROM" => "0",
+		"COMPONENT_TEMPLATE" => "breadcrumb"
+	),
+	false
+);?>
 </body>
