@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Главная");
 		"AJAX_OPTION_STYLE" => "Y",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "N",
-		"CACHE_TIME" => "3 600",
+		"CACHE_TIME" => "86400",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
 		"DETAIL_URL" => "",
@@ -139,7 +139,7 @@ $APPLICATION->SetTitle("Главная");
 		"DETAIL_URL" => "",
 		"ACTIVE_DATE_FORMAT" => "",
 		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600",
+		"CACHE_TIME" => "86400",
 		"CACHE_GROUPS" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
@@ -167,7 +167,7 @@ $APPLICATION->SetTitle("Главная");
 		"DETAIL_URL" => "",	// URL, ведущий на страницу с содержимым элемента раздела
 		"ACTIVE_DATE_FORMAT" => "",	// Формат показа даты
 		"CACHE_TYPE" => "A",	// Тип кеширования
-		"CACHE_TIME" => "3600",	// Время кеширования (сек.)
+		"CACHE_TIME" => "1209600",	// Время кеширования (сек.)
 		"CACHE_GROUPS" => "N",	// Учитывать права доступа
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
@@ -201,7 +201,7 @@ $APPLICATION->SetTitle("Главная");
 		"DETAIL_URL" => "",
 		"ACTIVE_DATE_FORMAT" => "j M, Y",
 		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600",
+		"CACHE_TIME" => "345600",
 		"CACHE_GROUPS" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
