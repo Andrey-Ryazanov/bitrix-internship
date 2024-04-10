@@ -8,7 +8,7 @@ $APPLICATION->SetTitle("Объявления");
 	"ads_news", 
 	array(
 		"ADD_ELEMENT_CHAIN" => "N",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
@@ -48,7 +48,7 @@ $APPLICATION->SetTitle("Объявления");
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "1",
 		"IBLOCK_TYPE" => "ads",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"LIST_FIELD_CODE" => array(
 			0 => "",
@@ -60,8 +60,7 @@ $APPLICATION->SetTitle("Объявления");
 			2 => "THE_PRESENCE_OF_A_GARAGE",
 			3 => "TOTAL_AREA",
 			4 => "PRICE",
-			5 => "[IMAGE_GALLERY] Галерея изображений",
-			6 => "",
+			5 => "",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "NUMBER_OF_FLOORS",
