@@ -7,34 +7,32 @@
 
     <?php
     $previousLevel = 0;
-    foreach($arResult as $arItem): ?>
+    foreach ($arResult as $arItem): ?>
 
         <?php if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel): ?>
             <?= str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"])); ?>
         <?php endif ?>
-
+    
         <?php if ($arItem["IS_PARENT"]): ?>
-            <li class="has-children">
-                <a href="<?=$arItem["LINK"]?>">
-                    <?=$arItem["TEXT"]?>
+            <li class="has-children <?= ($arItem["SELECTED"]) ? "active" : "" ?>">
+                <a href="<?= $arItem["LINK"] ?>">
+                    <?= $arItem["TEXT"] ?>
                 </a>
                 <ul class="dropdown">
         <?php else: ?>
-
             <?php if ($arItem["PERMISSION"] > "D"): ?>
-                <li>
-                    <a href="<?=$arItem["LINK"]?>">
-                        <?=$arItem["TEXT"]?>
+                <li <?= ($arItem["SELECTED"]) ? 'class="active"' : '' ?>>
+                    <a href="<?= $arItem["LINK"] ?>">
+                        <?= $arItem["TEXT"] ?>
                     </a>
                 </li>
-				
             <?php endif ?>
-
         <?php endif ?>
-
+    
         <?php $previousLevel = $arItem["DEPTH_LEVEL"]; ?>
-
-    <?php endforeach ?>
+    
+    <?php endforeach; ?>
+    
 
     <?php if ($previousLevel > 1): ?>
         <?= str_repeat("</ul></li>", ($previousLevel-1) ); ?>
