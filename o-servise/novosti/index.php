@@ -46,8 +46,9 @@ $APPLICATION->SetTitle("Новости");
 			1 => "",
 		),
 		"LIST_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "DISLIKE",
+			1 => "LIKE",
+			2 => "",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
