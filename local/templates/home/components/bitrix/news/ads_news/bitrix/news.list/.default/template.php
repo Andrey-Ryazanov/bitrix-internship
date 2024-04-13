@@ -1,5 +1,7 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
-<div class="pt-5">
+<? $showSearchForm = empty($arParams["SECTION_TITLE"]) === true || $arParams["SECTION_TITLE"] == $arResult["NAME"]; ?>
+<? if ($showSearchForm):?>
+  <div class="pt-5">
       <div class="container">
         <form class="row">      
           <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -93,14 +95,22 @@
         
       </div>
     </div>
+<? endif; ?>
 
+<? if (count($arResult["ITEMS"]) > 0): ?>
 <div class="news-line">
 	<div class="site-section site-section-sm bg-light">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-12">
 					<div class="site-section-title">
-						<h2><?=GetMessage("New_Properties")?></h2>
+						<h2>
+              <? if ($showSearchForm):?>
+                <?=GetMessage("New_Properties")?>
+              <? else: ?>
+                <?=$arParams["SECTION_TITLE"]?>
+              <? endif; ?>
+            </h2>
 					</div>
 				</div>
 			</div>
@@ -141,3 +151,4 @@
 		</div>
 	</div>
 </div>
+<? endif; ?>

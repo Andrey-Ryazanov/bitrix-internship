@@ -8,4 +8,5 @@ $MESS["T_IBLOCK_DESC_NEWS_SHARE_TEMPLATE"] = "Social Network Bookmarks Template"
 $MESS["T_IBLOCK_DESC_NEWS_SHARE_SYSTEM"] = "Use Social Networks And Bookmarks";
 $MESS["T_IBLOCK_DESC_NEWS_SHARE_SHORTEN_URL_LOGIN"] = "bit.ly Login";
 $MESS["T_IBLOCK_DESC_NEWS_SHARE_SHORTEN_URL_KEY"] = "bit.ly Key";
+$MESS["SECTION_TITLE"] = "Title";
 ?>
