@@ -38,7 +38,7 @@ if($arParams["USE_SEARCH"]=="Y"):?>
 <br />
 <?php
 endif;
-if($arParams["USE_FILTER"]=="Y"):
+/**if($arParams["USE_FILTER"]=="Y"):
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog.filter",
 	"",
@@ -59,7 +59,7 @@ $APPLICATION->IncludeComponent(
 ?>
 <br />
 <?php
-endif;
+endif;**/
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
@@ -109,6 +109,7 @@ $APPLICATION->IncludeComponent(
 		"FILTER_NAME" => $arParams["FILTER_NAME"],
 		"HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
 		"CHECK_DATES" => $arParams["CHECK_DATES"],
+		"SECTION_TITLE" => $arParams["SECTION_TITLE"],
 	],
 	$component
 );
