@@ -47,6 +47,22 @@
 
     <div class="border-bottom bg-white top-bar">
       <div class="container">
+        <div class="pull-right">
+            <?if ($USER->IsAuthorized()):?>
+              <a href="<?=$APPLICATION->GetCurPageParam("logout=yes&".bitrix_sessid_get(), array(
+                "login",
+                "logout",
+                "register",
+                "forgot_password",
+                "change_password"));?>">
+                <?=GetMessage("AUTH_LOGOUT_BUTTON")?>
+              </a>
+            <?else:?>
+                <a href="<?=SITE_DIR?>auth/"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
+                <a href="<?=SITE_DIR?>auth/registration.php"><?=GetMessage("AUTH_REGISTER_BUTTON")?></a>
+            <?endif;?>
+        </div>
+
         <div class="row align-items-center">
           <div class="col-6 col-md-6">
             <p class="mb-0">
