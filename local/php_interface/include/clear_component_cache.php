@@ -1,52 +1,47 @@
 <?php
 
 use Bitrix\Main\Application;
-use Bitrix\Main\EventManager;
 use Bitrix\Main\Entity\Event;
+use Bitrix\Main\EventManager;
 
 class HighloadBlockEventHandler
 {
     public static function registerHandlers()
     {
         $eventManager = EventManager::getInstance();
+
+        // Добавляем обработчики для событий
         $eventManager->addEventHandler(
-            'highloadblock',
-            'OnAfterAdd',
-            array(__CLASS__, 'onAfterHighloadblockAdd')
+            '',
+            'RealEstateAgentsOnAfterAdd',
+            ['HighloadBlockEventHandler', 'onAfterHighloadblockAction']
         );
+        
         $eventManager->addEventHandler(
-            'highloadblock',
-            'OnAfterUpdate',
-            array(__CLASS__, 'onAfterHighloadblockUpdate')
+            '',
+            'RealEstateAgentsOnAfterUpdate',
+            ['HighloadBlockEventHandler', 'onAfterHighloadblockAction']
         );
+        
         $eventManager->addEventHandler(
-            'highloadblock',
-            'OnAfterDelete',
-            array(__CLASS__, 'onAfterHighloadblockDelete')
+            '',
+            'RealEstateAgentsOnAfterDelete',
+            ['HighloadBlockEventHandler', 'onAfterHighloadblockAction']
         );
     }
 
-    public static function onAfterHighloadblockAdd(Event $event)
+    // Обработчик для событий
+    public static function onAfterHighloadblockAction(Event $event)
     {
-        $tableName = $event->getParameter("ENTITY")->getTableName();
+        $tableName = $event->getParameter("object")->entity->getDBTableName();
         self::clearCacheByTag($tableName);
-    }
+    } 
 
-    public static function onAfterHighloadblockUpdate(Event $event)
-    {
-        $tableName = $event->getParameter("ENTITY")->getTableName();
-        self::clearCacheByTag($tableName);
-    }
-
-    public static function onAfterHighloadblockDelete(Event $event)
-    {
-        $tableName = $event->getParameter("ENTITY")->getTableName();
-        self::clearCacheByTag($tableName);
-    }
-
+    // Метод для сброса кэша по тегу
     private static function clearCacheByTag($tagName)
     {
         $taggedCache = Application::getInstance()->getTaggedCache();
         $taggedCache->clearByTag('hlblock_table_name_' . $tagName);
     }
 }
+
