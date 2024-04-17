@@ -12,13 +12,15 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="site-blocks-cover overlay aos-init aos-animate" style="background-image: url(&quot;<?=$arResult["DETAIL_PICTURE"]["SRC"]?>&quot;); background-position: 50% -16.3px;" data-aos="fade" data-stellar-background-ratio="0.5">
+<div class="site-blocks-cover overlay aos-init aos-animate" style="background-image: url(&quot;<? if (empty($arResult["DETAIL_PICTURE"]["SRC"]) === false): ?> <?=$arResult["DETAIL_PICTURE"]["SRC"]?> <?endif;?>&quot;); background-position: 50% -16.3px;" data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
                 <span class="d-inline-block text-white px-3 mb-3 property-offer-type rounded"><?=GetMessage("Property_Details_of");?></span>
                 <h1 class="mb-2"><?= $arResult['NAME'] ?></h1>
-                <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?= number_format($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE']) ?></strong></p>
+                <?php if (empty($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE']) === false): ?>
+                    <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?= number_format($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE']) ?></strong></p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -31,106 +33,132 @@ $this->setFrameMode(true);
                     <div class="slide-one-item home-slider owl-carousel">
 
                         <? $imageGallery = $arResult["DISPLAY_PROPERTIES"]["IMAGE_GALLERY"]["FILE_VALUE"];
-                        if(count((array)$imageGallery["SRC"]) == 1): ?>
-                            <div><img src="<?=$imageGallery["SRC"]?>" alt="Image" class="img-fluid"></div>
-                        <? else: ?>
-                            <? foreach ($imageGallery as $arFile): ?>
-                                <div><img src="<?=$arFile["SRC"]?>" alt="Image" class="img-fluid"></div>
-                            <? endforeach; ?>
+                        if (empty($imageGallery) === false): 
+                            if(count((array)$imageGallery["SRC"]) == 1): ?>
+                                <div><img src="<?=$imageGallery["SRC"]?>" alt="Image" class="img-fluid"></div>
+                            <? else: ?>
+                                <? foreach ($imageGallery as $arFile): ?>
+                                    <div><img src="<?=$arFile["SRC"]?>" alt="Image" class="img-fluid"></div>
+                                <? endforeach; ?>
+                            <? endif; ?>
                         <? endif; ?>
                     </div>
                 </div>
                 <div class="bg-white">
                     <div class="row mb-5">
+                        <?php if (empty($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE']) === false): ?>
                         <div class="col-md-6">
                             <strong class="text-success h1 mb-3">$<?=number_format($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE'])?></strong>
                         </div>
+                        <?php endif; ?>
                         <div class="col-md-6">
                             <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
-                                <li>
-                                    <span class="property-specs"><?=GetMessage("Date_of_update"); ?></span>
-                                    <span class="property-specs-number"><?=(new DateTime($arResult['TIMESTAMP_X']))->format('d.m.Y')?></span>              
-                                </li>
-                                <li>
-                                    <span class="property-specs"><?=GetMessage("Floors"); ?></span>
-                                    <span class="property-specs-number"><?=$arResult['DISPLAY_PROPERTIES']['NUMBER_OF_FLOORS']['VALUE']?> <sup>+</sup></span>         
-                                </li>
-                                <li>
-                                    <span class="property-specs"><?=GetMessage("SQ_FT"); ?></span>
-                                    <span class="property-specs-number"><?=$arResult['DISPLAY_PROPERTIES']['TOTAL_AREA']['VALUE']?></span>          
-                                </li>
+                                <?php if (empty($arResult['TIMESTAMP_X']) === false): ?>
+                                    <li>
+                                        <span class="property-specs"><?=GetMessage("Date_of_update"); ?></span>
+                                        <span class="property-specs-number"><?=(new DateTime($arResult['TIMESTAMP_X']))->format('d.m.Y')?></span>              
+                                    </li>
+                                <?php endif; ?>
+                                <?php if (empty($arResult['DISPLAY_PROPERTIES']['NUMBER_OF_FLOORS']['VALUE']) === false): ?>
+                                    <li>
+                                        <span class="property-specs"><?=GetMessage("Floors"); ?></span>
+                                        <span class="property-specs-number"><?=$arResult['DISPLAY_PROPERTIES']['NUMBER_OF_FLOORS']['VALUE']?> <sup>+</sup></span>         
+                                    </li>
+                                <?php endif; ?>
+                                <?php if (empty($arResult['DISPLAY_PROPERTIES']['TOTAL_AREA']['VALUE']) === false): ?>
+                                    <li>
+                                        <span class="property-specs"><?=GetMessage("SQ_FT"); ?></span>
+                                        <span class="property-specs-number"><?=$arResult['DISPLAY_PROPERTIES']['TOTAL_AREA']['VALUE']?></span>          
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
-                            <span class="d-inline-block text-black mb-0 caption-text"><?=GetMessage("Baths"); ?></span>
-                            <strong class="d-block"><?=$arResult['DISPLAY_PROPERTIES']['NUMBER_OF_FLOORS']['VALUE']?></strong>
-                        </div>
-                        <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
-                            <span class="d-inline-block text-black mb-0 caption-text"><?=GetMessage("The_presence_of_a_garage");?></span>
-                            <strong class="d-block"><?=$arResult['DISPLAY_PROPERTIES']['THE_PRESENCE_OF_A_GARAGE']['VALUE'] ?? "Отсутствует"?></strong>
-                        </div>
-                        <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
-                            <span class="d-inline-block text-black mb-0 caption-text"><?=GetMessage("Price"); ?>/<?=GetMessage("SQ_FT"); ?></span>
-                            <strong class="d-block">$<?=intdiv($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE'], $arResult['DISPLAY_PROPERTIES']['TOTAL_AREA']['VALUE'])?></strong>
-                        </div>
+                        <?php if (empty($arResult['DISPLAY_PROPERTIES']['NUMBER_OF_FLOORS']['VALUE']) === false): ?>
+                            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                <span class="d-inline-block text-black mb-0 caption-text"><?=GetMessage("Baths"); ?></span>
+                                <strong class="d-block"><?=$arResult['DISPLAY_PROPERTIES']['NUMBER_OF_FLOORS']['VALUE']?></strong>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (empty($arResult['DISPLAY_PROPERTIES']['THE_PRESENCE_OF_A_GARAGE']['VALUE']) === false): ?>
+                            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                <span class="d-inline-block text-black mb-0 caption-text"><?=GetMessage("The_presence_of_a_garage");?></span>
+                                <strong class="d-block"><?=$arResult['DISPLAY_PROPERTIES']['THE_PRESENCE_OF_A_GARAGE']['VALUE']?></strong>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (empty($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE']) === false && empty($arResult['DISPLAY_PROPERTIES']['TOTAL_AREA']['VALUE']) === false): ?>
+                            <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                                <span class="d-inline-block text-black mb-0 caption-text"><?=GetMessage("Price"); ?>/<?=GetMessage("SQ_FT"); ?></span>
+                                <strong class="d-block">$<?=intdiv($arResult['DISPLAY_PROPERTIES']['PRICE']['VALUE'], $arResult['DISPLAY_PROPERTIES']['TOTAL_AREA']['VALUE'])?></strong>
+                            </div>
+                        <?php endif; ?>
                     </div>
+                    <?php if (empty($arResult['DETAIL_TEXT']) === false): ?>
                     <h2 class="h4 text-black"><?=GetMessage("More_Info");?></h2>
                     <p><?= $arResult['DETAIL_TEXT'] ?></p>
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <h2 class="h4 text-black mb-3"><?=GetMessage("Property_Gallery");?></h2>
-                        </div>
-                        <? if(count((array)$imageGallery["SRC"]) == 1): ?>
-                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <a href="<?=$imageGallery["SRC"]?>" class="image-popup gal-item">
-                                    <img src="<?=$imageGallery["SRC"]?>" alt="Image" class="img-fluid">
-                                </a>
+                    <? endif; ?>
+                    <?php if (empty($imageGallery) === false): ?>
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <h2 class="h4 text-black mb-3"><?=GetMessage("Property_Gallery");?></h2>
                             </div>
-                        <? else: ?>
-                            <? foreach ($imageGallery as $arFile): ?>
+                            <? if(count((array)$imageGallery["SRC"]) == 1): ?>
                                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <a href="<?=$arFile["SRC"]?>" class="image-popup gal-item">
-                                        <img src="<?=$arFile["SRC"]?>" alt="Image" class="img-fluid">
+                                    <a href="<?=$imageGallery["SRC"]?>" class="image-popup gal-item">
+                                        <img src="<?=$imageGallery["SRC"]?>" alt="Image" class="img-fluid">
                                     </a>
                                 </div>
-                            <? endforeach; ?>
-                        <? endif; ?>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <h2 class="h4 text-black mb-3"><?=GetMessage("Additional_materials");?></h2>
+                            <? else: ?>
+                                <? foreach ($imageGallery as $arFile): ?>
+                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                        <a href="<?=$arFile["SRC"]?>" class="image-popup gal-item">
+                                            <img src="<?=$arFile["SRC"]?>" alt="Image" class="img-fluid">
+                                        </a>
+                                    </div>
+                                <? endforeach; ?>
+                            <? endif; ?>
                         </div>
-                        <? $additionalMaterials = $arResult["DISPLAY_PROPERTIES"]["ADDITIONAL_MATERIALS"]["FILE_VALUE"];
-                            if(count((array)$additionalMaterials["SRC"]) == 1): ?>
-                              <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                  <a href="<?= $additionalMaterials["SRC"] ?>" class="gal-item">
-                                      <?= $additionalMaterials["ORIGINAL_NAME"] ?>
-                                  </a>
-                              </div>
-                          <? else: ?>
-                              <? foreach ($additionalMaterials as $arFile): ?>
-                                  <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                      <a href="<?= $arFile["SRC"] ?>" class="gal-item">
-                                          <?= $arFile["ORIGINAL_NAME"] ?>
-                                      </a>
-                                  </div>
-                              <? endforeach; ?>
-                          <? endif; ?>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <h2 class="h4 text-black mb-3"><?=GetMessage("Links_to_external_resources");?></h2>
+                    <? endif; ?>
+                    <?
+                    $additionalMaterials = $arResult["DISPLAY_PROPERTIES"]["ADDITIONAL_MATERIALS"]["FILE_VALUE"];
+                    if (empty($additionalMaterials) === false): ?>
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <h2 class="h4 text-black mb-3"><?=GetMessage("Additional_materials");?></h2>
+                            </div>
+                            <? 
+                                if(count((array)$additionalMaterials["SRC"]) == 1): ?>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                    <a href="<?= $additionalMaterials["SRC"] ?>" class="gal-item">
+                                        <?= $additionalMaterials["ORIGINAL_NAME"] ?>
+                                    </a>
+                                </div>
+                            <? else: ?>
+                                <? foreach ($additionalMaterials as $arFile): ?>
+                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                        <a href="<?= $arFile["SRC"] ?>" class="gal-item">
+                                            <?= $arFile["ORIGINAL_NAME"] ?>
+                                        </a>
+                                    </div>
+                                <? endforeach; ?>
+                            <? endif; ?>
                         </div>
-                          <? foreach ($arResult["DISPLAY_PROPERTIES"]["LINKS_TO_EXTERNAL_RESOURCES"]["VALUE"] as $link): ?>
-                              <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                  <a href="<?= (strpos($link, 'http://') === false && strpos($link, 'https://') === false) ? 'http://' . $link : $link ?>" class="gal-item">
-                                      <?= $link ?>
-                                  </a>
-                              </div>
-                          <? endforeach; ?>        
-                    </div>
+                    <? endif; ?>
+                    <?php if (empty($arResult["DISPLAY_PROPERTIES"]["LINKS_TO_EXTERNAL_RESOURCES"]["VALUE"]) === false): ?>
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <h2 class="h4 text-black mb-3"><?=GetMessage("Links_to_external_resources");?></h2>
+                            </div>
+                            <? foreach ($arResult["DISPLAY_PROPERTIES"]["LINKS_TO_EXTERNAL_RESOURCES"]["VALUE"] as $link): ?>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                    <a href="<?= (strpos($link, 'http://') === false && strpos($link, 'https://') === false) ? 'http://' . $link : $link ?>" class="gal-item">
+                                        <?= $link ?>
+                                    </a>
+                                </div>
+                            <? endforeach; ?>        
+                        </div>
+                    <? endif; ?>
                 </div>
             </div>
             <div class="col-lg-4 pl-md-5">
