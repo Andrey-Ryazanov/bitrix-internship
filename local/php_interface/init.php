@@ -1,6 +1,6 @@
 
 <?
-if (file_exists(require_once($_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/clear_component_cache.php"))){
+if (file_exists($_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/clear_component_cache.php")){
     // Автозагрузка классов
     require_once($_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/clear_component_cache.php");
 

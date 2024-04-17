@@ -33,10 +33,10 @@ $this->setFrameMode(true);
                 <?php foreach ($arResult['AGENTS']['ITEMS'] as $agent) : ?>
                     <div class="agent__card" data-agent-id="<?= $agent['ID']; ?>">
                         <div class="small-info">
-                            <?php
-                            $avatar_url = !empty($agent['PHOTO_SRC']) ? $agent['PHOTO_SRC'] : '/images/no-avatar.png';
-                            ?>
-                            <div class="avatar" style="background-image: url(<?= $avatar_url; ?>);"></div>
+                        <?php
+                        $avatar_url = !empty($agent['PHOTO_SRC']) ? $agent['PHOTO_SRC'] : $templateFolder . '/images/no-avatar.png';
+                        ?>
+                        <div class="avatar" style="background-image: url('<?= $avatar_url; ?>');"></div>
                             <div class="info">
                                 <div class="name"><?= $agent['UF_FIO']; ?></div>
                             </div>
@@ -57,7 +57,7 @@ $this->setFrameMode(true);
                                 </div>
                             </div>
                         </div>
-                        <? $isFavorite = in_array($agent['ID'], $arResult['STAR_AGENTS']);?>
+                        <? $isFavorite = empty($arResult['STAR_AGENTS']) === false && in_array($agent['ID'], $arResult['STAR_AGENTS']); ?>
                         <a class="star <?= $isFavorite ? 'active' : ''; ?>" data-agent-id="<?= $agent['ID']; ?>">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 4L14.472 9.26604L20 10.1157L16 14.2124L16.944 20L12 17.266L7.056 20L8 14.2124L4 10.1157L9.528 9.26604L12 4Z" stroke="#95929A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
