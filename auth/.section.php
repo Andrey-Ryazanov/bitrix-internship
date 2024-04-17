@@ -1,6 +1,0 @@
-<?
-$sSectionName = "Аутентификация";
-$arDirProperties = Array(
-
-);
-?>
