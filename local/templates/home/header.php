@@ -58,8 +58,8 @@
                 <?=GetMessage("AUTH_LOGOUT_BUTTON")?>
               </a>
             <?else:?>
-                <a href="<?=SITE_DIR?>auth/"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
-                <a href="<?=SITE_DIR?>auth/registration.php"><?=GetMessage("AUTH_REGISTER_BUTTON")?></a>
+                <a href="<?=SITE_DIR?>login/"><?=GetMessage("AUTH_LOGIN_BUTTON")?></a>
+                <a href="<?=SITE_DIR?>login?register=yes"><?=GetMessage("AUTH_REGISTER_BUTTON")?></a>
             <?endif;?>
         </div>
 
